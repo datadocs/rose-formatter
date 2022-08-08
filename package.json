@@ -1,0 +1,20 @@
+{
+  "description": "Process number format information specified as text",
+  "name": "format",
+  "version": "0.0.1",
+  "scripts": {
+    "generate": "peggy src/parse-format.peggy",
+    "build": "npm run generate && npx tsc",
+    "test": "npm run build && jest"
+  },
+  "devDependencies": {
+    "@webpack-cli/generators": "^2.4.1",
+    "jest": "^27.0.4",
+    "nectarjs": "^0.7.115",
+    "peggy": "^1.2.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "typescript": "^4.4.2"
+  }
+}
