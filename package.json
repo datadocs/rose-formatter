@@ -4,8 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "generate": "peggy src/parse-format.peggy",
-    "build": "npm run generate && npx tsc",
-    "test": "npm run build && jest"
+    "generate2": "peggy src/parse-format2.peggy",
+    "build": "npm run generate && npm run generate2 && npx tsc",
+    "test": "npm run build && jest",
+    "cpp-scanner": "node  ./cpp-plugin/cli.js ./src/parse-format2.peggy src/cpp/scanner.cpp"
   },
   "devDependencies": {
     "@webpack-cli/generators": "^2.4.1",
