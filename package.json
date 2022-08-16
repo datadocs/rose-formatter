@@ -4,6 +4,7 @@
   "license": "MIT",
   "author": "Alexandre Felipe <o.alexandre.felipe@gmail.com>",
   "version": "0.0.1",
+  "private": false,
   "main": "dist/index.js",
   "files": [
     "dist/index.js",
