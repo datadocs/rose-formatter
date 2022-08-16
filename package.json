@@ -11,8 +11,8 @@
     "src/index.d.ts"
   ],
   "scripts": {
-    "generate": "peggy src/parse-format.peggy",
-    "generate2": "peggy src/parse-format2.peggy",
+    "generate": "peggy --format umd src/parse-format.peggy",
+    "generate2": "peggy --format umd src/parse-format2.peggy",
     "build": "npm run generate && npm run generate2 && npx tsc -d && npx webpack",
     "test": "npm run build && jest",
     "cpp-scanner": "node  ./cpp-plugin/cli.js ./src/parse-format2.peggy src/cpp/scanner.cpp"
