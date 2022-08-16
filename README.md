@@ -27,7 +27,7 @@ To illustrate the renderer a TextRenderer was implemented.
 
 
 ```javascript
-const {TextRenderer} = require('./src/text-renderer')
+const {TextRenderer} = require('@datadocs/formatter')
 
 const r1 = new TextRenderer('# #/###')
 console.log(r1.formatNumber(Math.PI))
