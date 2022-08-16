@@ -9,7 +9,7 @@
   "scripts": {
     "generate": "peggy src/parse-format.peggy",
     "generate2": "peggy src/parse-format2.peggy",
-    "build": "npm run generate && npm run generate2 && npx tsc --declarations",
+    "build": "npm run generate && npm run generate2 && npx tsc -d",
     "test": "npm run build && jest",
     "cpp-scanner": "node  ./cpp-plugin/cli.js ./src/parse-format2.peggy src/cpp/scanner.cpp"
   },
