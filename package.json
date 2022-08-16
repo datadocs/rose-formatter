@@ -1,18 +1,21 @@
 {
   "description": "Process number format information specified as text",
-  "name": "format",
+  "name": "@datadocs/formatter",
+  "license": "MIT",
+  "author": "Alexandre Felipe <o.alexandre.felipe@gmail.com>",
   "version": "0.0.1",
+  "main": "dist/index.js",
+  "files": ["dist/index.js", "src/index.d.ts"],
   "scripts": {
     "generate": "peggy src/parse-format.peggy",
     "generate2": "peggy src/parse-format2.peggy",
-    "build": "npm run generate && npm run generate2 && npx tsc",
+    "build": "npm run generate && npm run generate2 && npx tsc --declarations",
     "test": "npm run build && jest",
     "cpp-scanner": "node  ./cpp-plugin/cli.js ./src/parse-format2.peggy src/cpp/scanner.cpp"
   },
   "devDependencies": {
     "@webpack-cli/generators": "^2.4.1",
     "jest": "^27.0.4",
-    "nectarjs": "^0.7.115",
     "peggy": "^1.2.0",
     "webpack-cli": "^4.9.1"
   },
