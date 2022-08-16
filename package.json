@@ -5,7 +5,10 @@
   "author": "Alexandre Felipe <o.alexandre.felipe@gmail.com>",
   "version": "0.0.1",
   "main": "dist/index.js",
-  "files": ["dist/index.js", "src/index.d.ts"],
+  "files": [
+    "dist/index.js",
+    "src/index.d.ts"
+  ],
   "scripts": {
     "generate": "peggy src/parse-format.peggy",
     "generate2": "peggy src/parse-format2.peggy",
