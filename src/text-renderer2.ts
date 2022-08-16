@@ -14,7 +14,7 @@ import {
   MaskedNumericToken,
   DateTimeFormat,
   TimeToken
-} from './parse-format'
+} from './parse-format2'
 
 export function testCondition(cond: Condition, n: number): boolean {
   if(cond === null){
@@ -283,9 +283,7 @@ export function excelDateToJSDate(days: number):Date {
   //    = 86400000 milliseconds / day
   return new Date(Math.round((days - 25569)*864e5));
 }
-export function jsDateToExcelDate(d: Date): number {
-  return d.getTime() / 86400 + 25569
-}
+
 const excelDateOrigin = excelDateToJSDate(0).getTime();
 function formatDate(f:DateTimeFormat, date: Date): string{
   return f.parts.map((t) => {
@@ -383,7 +381,6 @@ function formatConditional(f: ConditionalFormat[], n: number){
   }
   return n.toString()
 }
-
 export class TextRenderer {
   _format_string: string;
   _format_data: MultiFormat;
@@ -393,8 +390,5 @@ export class TextRenderer {
   }
   formatNumber(n: number): string {
     return formatConditional(this._format_data, n)
-  }
-  formatDate(d: Date): string {
-    return formatConditional(this._format_data, jsDateToExcelDate(d));
   }
 }

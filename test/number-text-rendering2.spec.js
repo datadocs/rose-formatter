@@ -1,4 +1,4 @@
-const {TextRenderer} = require('../src/text-renderer')
+const {TextRenderer} = require('../src/text-renderer2')
 const formatParser = require('../src/parse-format')
 describe('Conditional format', () => {
   it('less than', () => {
@@ -59,7 +59,7 @@ describe('Zero mask', () => {
   it('More integer digits than mask specifies', () => {
     const formatter = new TextRenderer('#')
     expect(formatter.formatNumber(1)).toEqual('1')
-    expect(formatter.formatNumber(0)).toEqual('0')
+    expect(formatter.formatNumber(0)).toEqual('')
     expect(formatter.formatNumber(100)).toEqual('100')
   })
 
@@ -70,8 +70,21 @@ describe('Zero mask', () => {
     expect(formatter.formatNumber(100)).toEqual('0100')
   })
 
+  describe('Ellipsis of the integer part', () => {
+    it('Number less than 1 with zero integer digit', () => {
+      const formatter = new TextRenderer('#.##');
+      expect(formatter._format_data[0].format.int.totalPositions).toEqual(1)
+      expect(formatter._format_data[0].format.int.firstReserved).toEqual(null)
+      expect(formatter.formatNumber(0.35)).toEqual('.35')
+    })
+  })
+
   describe('Format with pinned and optional digits |#.00#|', () => {
-    const formatter = new TextRenderer('#.00#')
+    const formatter = new TextRenderer('0.00#')
+    it('required positions', () => {
+      expect(formatter._format_data[0].format.decimal.lastReserved).toEqual(1)
+      expect(formatter._format_data[0].format.decimal.totalPositions).toEqual(3)
+    })
     it('Rounding nearest (up)', () => {
       expect(formatter.formatNumber(0.98765)).toEqual('0.988')
     })
@@ -98,7 +111,7 @@ describe('Zero mask', () => {
     })
   })
   describe('Rounding and padding negative numbers', () => {
-    const formatter = new TextRenderer('#.00#')
+    const formatter = new TextRenderer('0.00#')
     it('Rounding nearest (down)', () => {
       expect(formatter.formatNumber(-0.98765)).toEqual('-0.988')
     })
@@ -154,7 +167,11 @@ describe('Thousand factors', () => {
 describe('Thousand separators', () => {
   describe('Minimal example', () => {
     it('1-digit #,#', () => {
-      expect(new TextRenderer('#,#').formatNumber(1)).toEqual('1')
+      const formatter = new TextRenderer('#,#')
+      expect(formatter._format_data[0].format.int.firstReserved).toEqual(null)
+      expect(formatter._format_data[0].format.int.lastReserved).toEqual(null)
+      expect(formatter._format_data[0].format.int.totalPositions).toEqual(2)
+      expect(formatter.formatNumber(1)).toEqual('1')
     })
     it('2-digit #,#', () => {
       expect(new TextRenderer('#,#').formatNumber(11)).toEqual('11')
@@ -163,6 +180,7 @@ describe('Thousand separators', () => {
       expect(new TextRenderer('#,#').formatNumber(111)).toEqual('111')
     })
     it('4-digit #,#', () => {
+      expect(new TextRenderer('#,#')._format_data[0].format.thousandSeparator).toEqual(',')
       expect(new TextRenderer('#,#').formatNumber(1111)).toEqual('1,111')
     })
     it('5-digit #,#', () => {
@@ -186,7 +204,11 @@ describe('Thousand separators', () => {
     })
   })
   it('1-digit 0,0', () => {
-    expect(new TextRenderer('0,0').formatNumber(1)).toEqual('01')
+    const formatter = new TextRenderer('0,0')
+    expect(formatter._format_data[0].format.int.firstReserved).toEqual(0)
+    expect(formatter._format_data[0].format.int.lastReserved).toEqual(1)
+    expect(formatter._format_data[0].format.int.totalPositions).toEqual(2)
+    expect(formatter.formatNumber(1)).toEqual('01')
   })
 })
 
@@ -209,7 +231,11 @@ describe('Scientific notation', () => {
       expect(new TextRenderer('0.00E+0').formatNumber(1)).toEqual('1.00E+0')
     })
     it('1.00E+1', () => {
-      expect(new TextRenderer('0.00E+0').formatNumber(10)).toEqual('1.00E+1');
+      const formatter = new TextRenderer('0.00E+0')
+      // this will determine the alignment
+      expect(formatter._format_data[0].format.type).toEqual('scientific')
+      expect(formatter._format_data[0].format.mantissa.int.totalPositions).toEqual(1)
+      expect(formatter.formatNumber(10)).toEqual('1.00E+1');
     })
     it('1.00E+2', () => {
       expect(new TextRenderer('0.00E+0').formatNumber(100)).toEqual('1.00E+2');
@@ -344,11 +370,10 @@ describe('Scientific notation', () => {
   describe('Masked exponent', () => {
     it('1e123 as 1e1-2/3', () => {
       // It accepts unescaped, excel rejects this case
-      expect(new TextRenderer('0E-0-0/0').formatNumber(1e123)).toEqual('1E1-2/3')
+      expect(new TextRenderer('0E-0-0\\/0').formatNumber(1e123)).toEqual('1E1-2/3')
       expect(new TextRenderer('0E-0\\-0\\/0').formatNumber(1e123)).toEqual('1E1-2/3')
     })
   })
-
 })
 
 describe('Fractions', () => {
@@ -406,7 +431,19 @@ describe('Fractions', () => {
     expect(new TextRenderer('#/#\\a#\\b#\\c#').formatNumber(1233/1234)).toEqual('1233/1a2b3c4')
   })
   it('Masked numerator', () => {
-    // expect(new TextRenderer('#\\a#\\b#\\c#/####').formatNumber(1233/1234)).toEqual('abc1233/1234')
+    // This example does not work properly in excel as well, it drops the 'c'
+    expect(new TextRenderer('#\\a#\\b#\\c#/####').formatNumber(1233/1234)).toEqual('abc1233/1234')
+    // expect(new TextRenderer('/####').formatNumber(1233/1234)).toEqual('ab1233c/1234')
     expect(new TextRenderer('0\\a0\\b0\\c0/####').formatNumber(1233/1234)).toEqual('0a0b0c1233/1234')
+  })
+
+})
+
+describe('Date serialization', () => {
+  it('today()', () => {
+    const dateFormat = new TextRenderer('dd/mm/yyyy');
+    expect(dateFormat._format_data[0].format.type).toEqual('datetime')
+    expect(dateFormat.formatNumber(44456.000)).toEqual('17/09/2021')
+    expect(dateFormat.formatNumber(44456.999)).toEqual('17/09/2021')
   })
 })
