@@ -1,5 +1,10 @@
+
+<img src=static/rose.png width=100%>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/npm/dm/@datadocs/formatter.svg)](https://npmtrends.com/@datadocs/formatter)
 [![Status](https://github.com/datadocs/formatter/actions/workflows/validate.yml/badge.svg)](https://github.com/datadocs/formatter/actions/workflows/validate.yml)
+
 ## Setup
 
 ``` bash
