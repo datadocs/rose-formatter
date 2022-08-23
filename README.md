@@ -9,7 +9,7 @@
 ![branches](badges/coverage-branches.svg)
 ![functions](badges/coverage-functions.svg)
 ![statements](badges/coverage-statements.svg)
-![jest]("badges/coverage-jest coverage.svg")
+<img src="badges/coverage-jest coverage.svg">
 ## Setup
 
 ``` bash
