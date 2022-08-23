@@ -5,6 +5,11 @@
 [![Downloads](https://img.shields.io/npm/dm/@datadocs/formatter.svg)](https://npmtrends.com/@datadocs/formatter)
 [![Status](https://github.com/datadocs/formatter/actions/workflows/validate.yml/badge.svg)](https://github.com/datadocs/formatter/actions/workflows/validate.yml)
 
+
+![branches](badges/coverage-branches.svg)
+![functions](badges/coverage-functions.svg)
+![statements](badges/coverage-statements.svg)
+![jest](badges/coverage-jest coverage.svg)
 ## Setup
 
 ``` bash
