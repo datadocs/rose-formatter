@@ -195,7 +195,7 @@ LiteralComma = ',' {return $({type:'literal', mask: ','})}
 
 
 Comparator =  '<>' / '<=' / '<' / '>=' / '>' / '='
-NumericConstant = s:$([+-]? [0-9]+ ('.' [0-9]*)? ('e'i [+-] [0-9]+)?) {return Number(s)}
+NumericConstant = s:$([+-]? [0-9]+ ('.' [0-9]*)? ('e'i [+-]? [0-9]+)?) {return Number(s)}
 IntegerConstant "integer-number" = n:$([1-9][0-9]+) {return parseInt(n)};
 Hidden "hidden" = '_' mask:(Escaped / .) {return $({type: 'hidden',  mask})}
 TextContent = Hidden / Fill / Literal
