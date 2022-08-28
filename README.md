@@ -13,6 +13,18 @@ npm generate # generates parse-format.js from parse-format.pegjs
 npm test
 ```
 
+![](figures/ex01.png)
+![](figures/ex02.png)
+![](figures/ex03.png)
+![](figures/ex04.png)
+![](figures/ex05.png)
+![](figures/ex06.png)
+![](figures/ex07.png)
+![](figures/ex08.png)
+![](figures/ex09.png)
+![](figures/ex10.pnpg)
+![](figures/ex11.png)
+
 ## Tests
 
 ### Basic syntax
