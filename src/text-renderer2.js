@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.TextRenderer = exports.excelDateToJSDate = exports.formatScientific = exports.formatInteger = exports.formatFixed = exports.applyScale = exports.formatLeftAlignedMaskedNumber = exports.formatMaskedNumber = exports.testCondition = void 0;
+exports.TextRenderer = exports.jsDateToExcelDate = exports.excelDateToJSDate = exports.formatScientific = exports.formatInteger = exports.formatFixed = exports.applyScale = exports.formatLeftAlignedMaskedNumber = exports.formatMaskedNumber = exports.testCondition = void 0;
 var parse_format2_1 = require("./parse-format2");
 function testCondition(cond, n) {
     if (cond === null) {
@@ -198,6 +198,10 @@ function excelDateToJSDate(days) {
 }
 exports.excelDateToJSDate = excelDateToJSDate;
 var excelDateOrigin = excelDateToJSDate(0).getTime();
+function jsDateToExcelDate(date) {
+    return 25569.0 + ((date.getTime() - (date.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24));
+}
+exports.jsDateToExcelDate = jsDateToExcelDate;
 function formatDate(f, date) {
     return f.parts.map(function (t) {
         switch (t.type) {
