@@ -150,16 +150,16 @@ async function revealInput(fmt, value, fname, fps=15){
 }
 
 
-revealFormat('0.0000E+000', 123.45678, 'gif/ex01');
-revealFormat('0 0/000000', 100 * Math.PI, 'gif/ex02');
-revealFormat('0.0%', 0.234, 'gif/ex03', 5);
-revealFormat('###-000\\bb00\\xc000!', 1029384756, 'gif/ex04');
+revealFormat('0.0000E+000', 123.45678, 'figures/ex01');
+revealFormat('0 0/000000', 100 * Math.PI, 'figures/ex02');
+revealFormat('0.0%', 0.234, 'figures/ex03', 5);
+revealFormat('###-000\\bb00\\xc000!', 1029384756, 'figures/ex04');
 revealFormat('dd of mmmm of yyyy, dddd hh:mm:ss.000', 
-  f.jsDateToExcelDate(new Date()), 'gif/ex05');
-revealFormat('d "day" = [h]"h" m"m" s"s" = [m]m s"s" = [s]"s"', 1, 'gif/ex06');
-revealInput('0.###E+0', '12345678987654321', 'gif/ex07', 10)
-revealInput('000.###E+0', '12345678987654321', 'gif/ex08', 5)
-revealInput('00000.###E+0', '12345678987654321', 'gif/ex09', 5)
-revealInput('#####.###E+0', '12345678987654321', 'gif/ex10', 5)
-revealInput('#,#.00', '12345678987654.321', 'gif/ex11', 5)
-revealInput('[>=1e9]0,,,Bi;[>=1e6]0,,\\M;[>=1e3]0,k;#', '12345678987654', 'gif/ex12', 5)
+  f.jsDateToExcelDate(new Date()), 'figures/ex05');
+revealFormat('d "day" = [h]"h" m"m" s"s" = [m]\\m s"s" = [s]"s"', 1, 'figures/ex06');
+revealInput('0.###E+0', '12345678987654321', 'figures/ex07', 10)
+revealInput('000.###E+0', '12345678987654321', 'figures/ex08', 5)
+revealInput('00000.###E+0', '12345678987654321', 'figures/ex09', 5)
+revealInput('#####.###E+0', '12345678987654321', 'figures/ex10', 5)
+revealInput('#,#.00', '12345678987654.321', 'figures/ex11', 5)
+revealInput('[>=1e9]0,,,Bi;[>=1e6]0,,\\M;[>=1e3]0,k;#', '12345678987654', 'figures/ex12', 5)
