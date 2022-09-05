@@ -1,2 +1,2 @@
-export * from './parse-format2'
-export * from './text-renderer2'
+export * from './parse-format'
+export * from './text-renderer'

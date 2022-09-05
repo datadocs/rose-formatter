@@ -137,58 +137,58 @@ describe('Noon', () => {
 })
 
 describe("Time spans", () => {
-  const ms = 1;
-  const s = 1000*ms;
-  const m = 60 * s;
-  const h = 60 * m;
-  const d = 24 * h;
+  const d = 1;
+  const h = d / 24;
+  const m = h / 60;
+  const s = m / 60;
+  const ms = s / 1000;
 
   
   describe("Ellapsed hours", () => {
     describe('More than one day', () => {
       it('without leading zeroes', () => {
-        expect(new TextRenderer("[h] m").formatDate(new Date(100*h + 25*m)))
+        expect(new TextRenderer("[h] m").formatNumber((100*h + 25*m)))
           .toEqual('100 25')
       })
       it('with leading zeros', () => {
-        expect(new TextRenderer("[hhhh] m").formatDate(new Date(100*h + 25*m)))
+        expect(new TextRenderer("[hhhh] m").formatNumber((100*h + 25*m)))
           .toEqual('0100 25')
       })
     })
     it('less than 10 hours', () => {
-      expect(new TextRenderer("[h] m").formatDate(new Date(h + 25*m)))
+      expect(new TextRenderer("[h] m").formatNumber((h + 25*m)))
         .toEqual('1 25')
     })
   })
   describe("Ellapsed minutes", () => {
     describe('More than one hour', () => {
       it('without leading zeroes', () => {
-        expect(new TextRenderer("[m] s").formatDate(new Date(100*m + 25*s)))
+        expect(new TextRenderer("[m] s").formatNumber((100*m + 25*s)))
           .toEqual('100 25')
       })
       it('with leading zeros', () => {
-        expect(new TextRenderer("[mmmm] s").formatDate(new Date(100*m + 25*s)))
+        expect(new TextRenderer("[mmmm] s").formatNumber((100*m + 25*s)))
           .toEqual('0100 25')
       })
     })
     it('less than 10 minutes', () => {
-      expect(new TextRenderer("[m] s").formatDate(new Date(m + 25*s)))
+      expect(new TextRenderer("[m] s").formatNumber((m + 25*s)))
         .toEqual('1 25')
     })
   })
   describe("Ellapsed seconds", () => {
     describe('More than one minute', () => {
       it('without leading zeroes', () => {
-        expect(new TextRenderer("[s].00").formatDate(new Date(100*s + 250*ms)))
+        expect(new TextRenderer("[s].00").formatNumber((100*s + 250*ms)))
           .toEqual('100.25')
       })
       it('with leading zeros', () => {
-        expect(new TextRenderer("[ssss].00").formatDate(new Date(100*s + 250*ms)))
+        expect(new TextRenderer("[ssss].00").formatNumber((100*s + 250*ms)))
           .toEqual('0100.25')
       })
     })
     it('less than 10 seconds', () => {
-      expect(new TextRenderer("[s].00").formatDate(new Date(s + 250*ms)))
+      expect(new TextRenderer("[s].00").formatNumber((s + 250*ms)))
         .toEqual('1.25')
     })
   })

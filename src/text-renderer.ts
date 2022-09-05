@@ -14,7 +14,7 @@ import {
   MaskedNumericToken,
   DateTimeFormat,
   TimeToken
-} from './parse-format2'
+} from './parse-format'
 
 export function testCondition(cond: Condition, n: number): boolean {
   if(cond === null){
@@ -288,7 +288,7 @@ const excelDateOrigin = excelDateToJSDate(0).getTime();
 export function jsDateToExcelDate(date: Date): number {
   return 25569.0 + ((date.getTime() - (date.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24));
 }
-function formatDate(f:DateTimeFormat, date: Date): string{
+function formatDate(f:DateTimeFormat, date: Date): string {
   return f.parts.map((t) => {
     switch(t.type) {
       case 'time':
@@ -393,5 +393,8 @@ export class TextRenderer {
   }
   formatNumber(n: number): string {
     return formatConditional(this._format_data, n)
+  }
+  formatDate(n: Date): string {
+    return formatConditional(this._format_data, jsDateToExcelDate(n))
   }
 }
