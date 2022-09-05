@@ -1,5 +1,5 @@
 
-<img src=static/rose.png width=100%>
+<img src=static/rose.svg width=100%>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://img.shields.io/npm/dm/@datadocs/formatter.svg)](https://npmtrends.com/@datadocs/formatter)
