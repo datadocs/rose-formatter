@@ -142,3 +142,7 @@ dist
 .svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+src/index.js
+src/index.js.map
+src/text-renderer.d.ts
+src/text-renderer.js.map
