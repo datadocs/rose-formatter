@@ -1,10 +1,10 @@
 
-<img src="https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/static/rose.svg" width=100%>
+<img src="./static/rose.svg" width=100%>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://img.shields.io/npm/dm/@datadocs/formatter.svg)](https://npmtrends.com/@datadocs/formatter)
 <!-- BEGIN FROZEN IMAGE https://github.com/datadocs/rose-formatter/actions/workflows/validate.yml/badge.svg as validation.svg -->
-  <img src="./static/frozen-validation.svg">
+  <img src="https://github.com/datadocs/rose-formatter/actions/workflows/validate.yml/badge.svg">
 <!-- END FROZEN IMAGE -->
 ## Setup
 
@@ -14,17 +14,17 @@ npm generate # generates parse-format.js from parse-format.pegjs
 npm test
 ```
 
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex01.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex02.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex03.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex04.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex05.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex06.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex07.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex08.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex09.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex10.png)
-![](https://raw.githubusercontent.com/datadocs/rose-formatter/0.6.2/figures/ex11.png)
+![](./figures/ex01.png)
+![](./figures/ex02.png)
+![](./figures/ex03.png)
+![](./figures/ex04.png)
+![](./figures/ex05.png)
+![](./figures/ex06.png)
+![](./figures/ex07.png)
+![](./figures/ex08.png)
+![](./figures/ex09.png)
+![](./figures/ex10.png)
+![](./figures/ex11.png)
 
 ## Tests
 
