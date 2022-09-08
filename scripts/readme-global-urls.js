@@ -3,7 +3,7 @@ const fs = require('fs');
 const https = require('https');
 const readme_file = './README.md'
 const MD_IMG = /\(\s*(\.\/[^)]*?\.(?:apng|png|svg|jpg|gif))\s*\)/ig
-const HTML_IMG = /="\.\/([^"]*\.(?:apng|png|svg|jpg|gif))\s*"/ig
+const HTML_IMG = /="(\.\/[^"]*\.(?:apng|png|svg|jpg|gif))\s*"/ig
 const refTag = process.env.GITHUB_REF.split('/').pop().trim()
 const README = fs.readFileSync(readme_file, {encoding:'utf-8'})
 const package = require('../package.json')
