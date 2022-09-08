@@ -9,11 +9,9 @@ const README = fs.readFileSync(readme_file, {encoding:'utf-8'})
 const package = require('../package.json')
 const removedFile = {}
 const REMOVED = {}
-fs.writeFileSync(readme_file, README
-  .replace(MD_IMG, rewriteURL)
-  .replace(HTML_IMG, rewriteURL)
-)
-
+const UPDATED_README = README.replace(MD_IMG, rewriteURL).replace(HTML_IMG, rewriteURL)
+fs.writeFileSync(readme_file, UPDATED_README)
+console.log(UPDATED_README)
 
 function rewriteURL(orig, file){
   if(removedFile[file] === REMOVED || fs.statSync(file).isFile){

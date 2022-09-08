@@ -3,7 +3,9 @@ const https = require('https');
 const readme_file = __dirname + '/../README.md'
 let README = fs.readFileSync(readme_file, {encoding:'utf-8'})
 let FROZEN_SECTION = /\<\!--\s*BEGIN\s*FROZEN\s*IMAGE\s*(https:\/\/\S*?)(?:\s*as\s*(\S*?))?\s*-->.*?\<!--\s*END\s*FROZEN\s*IMAGE\s*--\>/igs
-fs.writeFileSync(readme_file, README.replace(FROZEN_SECTION, downloadAndUpdate))
+const UPDATED_README = README.replace(FROZEN_SECTION, downloadAndUpdate);
+fs.writeFileSync(readme_file, UPDATED_README)
+console.log(UPDATED_README)
 function downloadAndUpdate(body, url, alias){
   if(!alias){
     alias = url.split('?')[0].split('/').pop()
