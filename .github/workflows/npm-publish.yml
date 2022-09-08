@@ -5,7 +5,7 @@ name: Node.js Package
 
 on:
   release:
-    types: [deleted]
+    types: [created]
 
 jobs:
   publish-npm:
@@ -16,6 +16,9 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm unpublish npm unpublish @datadocs/formatter@0.0.1
+      - run: npm install
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
