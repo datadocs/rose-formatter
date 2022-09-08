@@ -1,19 +1,25 @@
 {
   "description": "Process number format information specified as text",
+  "repository": {
+    "url": "https://github.com/datadocs/rose-formatter/"
+  },
   "name": "@datadocs/formatter",
   "license": "MIT",
   "author": "Alexandre Felipe <o.alexandre.felipe@gmail.com>",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "private": false,
   "main": "dist/index.js",
   "files": [
     "dist/index.js",
-    "src/index.d.ts"
+    "src/index.d.ts",
+    "figures/*.png",
+    "static/*.svg"
   ],
   "scripts": {
     "generate": "peggy --format umd src/parse-format.peggy",
     "build": "npm run generate && npx tsc -d && npx webpack",
-    "test": "npm run build && jest"
+    "test": "npm run build && jest",
+    "pre-publish": "node scripts/freeze-readme.js && node scripts/readme-global-urls.js && node scripts/check-tag.js"
   },
   "devDependencies": {
     "@webpack-cli/generators": "^2.4.1",
