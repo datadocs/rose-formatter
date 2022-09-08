@@ -18,7 +18,7 @@ function downloadAndUpdate(body, url, alias){
   if(error){
     console.log(`Failed to download ${url}`)
   }else{
-    const file = fs.createWriteStream(`${__dirname}/../static/${alias}`);
+    const file = fs.createWriteStream(`${__dirname}/../static/frozen-${alias}`);
     file.on('finish', () => {
       console.log(`Saved file ${alias}`)
     })
@@ -26,6 +26,6 @@ function downloadAndUpdate(body, url, alias){
   }
 });
  return `<!-- BEGIN FROZEN IMAGE ${url} as ${alias} -->
-  <img src="./static/${alias}">
+  <img src="./static/frozen-${alias}">
 <!-- END FROZEN IMAGE -->`
 }
