@@ -6,6 +6,7 @@
 <!-- BEGIN FROZEN IMAGE https://github.com/datadocs/rose-formatter/actions/workflows/validate.yml/badge.svg as validation.svg -->
   <img src="https://github.com/datadocs/rose-formatter/actions/workflows/validate.yml/badge.svg">
 <!-- END FROZEN IMAGE -->
+
 ## Setup
 
 ``` bash

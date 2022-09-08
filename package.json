@@ -19,7 +19,7 @@
     "generate": "peggy --format umd src/parse-format.peggy",
     "build": "npm run generate && npx tsc -d && npx webpack",
     "test": "npm run build && jest",
-    "pre-release": "node scripts/freeze-readme.js && node scripts/readme-global-urls.js && node scripts/check-tag.js"
+    "pre-release": "node scripts/readme-global-urls.js && node scripts/freeze-readme.js && node scripts/check-tag.js"
   },
   "devDependencies": {
     "@webpack-cli/generators": "^2.4.1",
