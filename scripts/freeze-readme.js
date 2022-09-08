@@ -20,7 +20,7 @@ function downloadAndUpdate(body, url, alias){
   }
   
   pending_downloads.push(new Promise((resolve, reject) => {
-    setTimeout(() => reject(new Error('Timeout')), 15000)
+    const tid = setTimeout(() => reject(new Error('Timeout')), 15000)
     https.get(url, 
     {
       "headers": {
@@ -31,11 +31,13 @@ function downloadAndUpdate(body, url, alias){
     (response, error) => {
       if(error){
         console.log(`Failed to download ${url}`)
+        clearTimeout(tid)
         reject(new Error(`Failed to download ${url}`))
       }else{
         const file = fs.createWriteStream(`${__dirname}/../static/frozen-${alias}`);
         file.on('finish', () => {
           console.log(`Saved file ${alias}`)
+          clearTimeout(tid)
           resolve();
         })
         response.pipe(file);
@@ -48,9 +50,12 @@ function downloadAndUpdate(body, url, alias){
 }
 
 function embedFrozenImage(_, img){
-  if(img.toLowerCase().endsWith('.svg')){
-    return fs.readFileSync(`${__dirname}/../${img}`, {encoding:'utf-8'})
-  }else{
-    return _;
+  const data = (Buffer.from(fs.readFileSync(`${__dirname}/../${img}`, {encoding:'utf-8'}))).toString('base64');
+  const extension = img.toLowerCase().split('.').pop()
+  switch(extension){
+    case 'svg': return `<img src="data:image/svg+xml;base64,${data}">`;
+    case 'png': return `<img src="data:image/png;base64, ${data}">`;
+    default:
+      return _;
   }
 }
