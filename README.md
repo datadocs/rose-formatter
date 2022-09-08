@@ -3,8 +3,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://img.shields.io/npm/dm/@datadocs/formatter.svg)](https://npmtrends.com/@datadocs/formatter)
-[![Status](https://github.com/datadocs/formatter/actions/workflows/validate.yml/badge.svg)](https://github.com/datadocs/formatter/actions/workflows/validate.yml)
-
+<!-- BEGIN FROZEN IMAGE https://github.com/datadocs/rose-formatter/actions/workflows/validate.yml/badge.svg as validation.svg -->
+  <img src="https://github.com/datadocs/rose-formatter/actions/workflows/validate.yml/badge.svg">
+<!-- END FROZEN IMAGE -->
 ## Setup
 
 ``` bash
@@ -13,17 +14,17 @@ npm generate # generates parse-format.js from parse-format.pegjs
 npm test
 ```
 
-![](figures/ex01.png)
-![](figures/ex02.png)
-![](figures/ex03.png)
-![](figures/ex04.png)
-![](figures/ex05.png)
-![](figures/ex06.png)
-![](figures/ex07.png)
-![](figures/ex08.png)
-![](figures/ex09.png)
-![](figures/ex10.pnpg)
-![](figures/ex11.png)
+![](./figures/ex01.png)
+![](./figures/ex02.png)
+![](./figures/ex03.png)
+![](./figures/ex04.png)
+![](./figures/ex05.png)
+![](./figures/ex06.png)
+![](./figures/ex07.png)
+![](./figures/ex08.png)
+![](./figures/ex09.png)
+![](./figures/ex10.png)
+![](./figures/ex11.png)
 
 ## Tests
 
