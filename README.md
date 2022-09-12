@@ -123,7 +123,7 @@ To illustrate the renderer a TextRenderer was implemented.
 
 
 ```javascript
-const {TextRenderer} = require('@datadocs/formatter')
+const {TextRenderer} = require('@datadocs/rose-formatter')
 
 const r1 = new TextRenderer('# #/###')
 console.log(r1.formatNumber(Math.PI))
