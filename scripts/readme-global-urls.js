@@ -11,7 +11,6 @@ const removedFile = {}
 const REMOVED = {}
 const UPDATED_README = README.replace(MD_IMG, rewriteURL).replace(HTML_IMG, rewriteURL)
 fs.writeFileSync(readme_file, UPDATED_README)
-console.log(UPDATED_README)
 
 function rewriteURL(orig, file){
   if(fs.existsSync(file) && fs.statSync(file).isFile){
