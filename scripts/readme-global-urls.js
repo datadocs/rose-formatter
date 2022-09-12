@@ -14,9 +14,11 @@ fs.writeFileSync(readme_file, UPDATED_README)
 console.log(UPDATED_README)
 
 function rewriteURL(orig, file){
-  if(removedFile[file] === REMOVED || fs.statSync(file).isFile){
+  if(fs.statSync(file).isFile){
     fs.unlinkSync(file);
     removedFile[file] = REMOVED;
+  }
+  if(removedFile[file] === REMOVED){
     return orig.replace(file, 
       `${package.repository.url.replace('github.com', 'raw.githubusercontent.com')}${refTag}/${file.slice(2)}`)
   }else{
