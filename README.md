@@ -108,7 +108,7 @@ The next example shows how to use conditional formatting to show thousands, mill
 
 ### Basic syntax
 
-The basic syntax makes sure that the parser accepts the <a href=http://download.microsoft.com/download/6/A/8/6A818B0B-06F4-4E41-80DE-D383A3B89865/TEXT%20function%20examples.xlsx download> given in the [Excel text function documentation](https://support.microsoft.com/en-us/office/text-function-20d5ac4d-7b94-49fd-bb38-93d29371225c).
+The basic syntax makes sure that the parser accepts the <a href=http://download.microsoft.com/download/6/A/8/6A818B0B-06F4-4E41-80DE-D383A3B89865/TEXT%20function%20examples.xlsx download>examples</a> given in the [Excel text function documentation](https://support.microsoft.com/en-us/office/text-function-20d5ac4d-7b94-49fd-bb38-93d29371225c).
 
 
 ### Format parsing
