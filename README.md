@@ -23,6 +23,7 @@ You can work with different number of decimal figures. Adding `0` makes a figure
 ![](./figures/ex01.png)
 
 We can use `#` to only show figures that contribute to a better approximation of the number
+
 ![](./figures/ex07.png)
 
 ### Rational format
@@ -36,6 +37,7 @@ the format `0 0/00` will show the number as the integer part followed by a fract
 ## Percentage
 
 If the format contains a `%` suffix, it will convert the number using to a percentage using the relation `100% = 1` (You could also use multiple percent symbols, and the rule will be applied repeatedly untill all are substitued).
+
 ![](./figures/ex03.png)
 
 ## Number masks
@@ -74,6 +76,7 @@ The `+` in the above table indicate that the preceding letter may repeat one or 
 
 In addition to the above it is possible, for instance, to use `[h]`, `[m]`, `[s]` to show durations in
 hours, minutes or seconds, respectively.
+
 ![](./figures/ex06.png)
 
 
@@ -82,6 +85,7 @@ hours, minutes or seconds, respectively.
 The scientific notation can be restricted to use exponents that are multiple of a given value by 
 adding more than one digit place holder, e.g `#E+#` would use any exponent, `##E+#` would use only
 even exponents, and so on.
+
 ![](./figures/ex07.png)
 ![](./figures/ex08.png)
 ![](./figures/ex09.png)
@@ -90,11 +94,13 @@ even exponents, and so on.
 ## Thousands separator
 
 By using a comma followed by a integer digit mask introduces thousands separators to the number
+
 ![](./figures/ex11.png)
 
 ## Thousand multipliers and conditional formatting
 By adding a comma at the end of the integer part mask the number will represented divided by `1000`, this may be used multiple times.
 The next example shows how to use conditional formatting to show thousands, millions or billions accordingly to the number magnitude.
+
 ![](./figures/ex12.png)
 
 ## Tests
