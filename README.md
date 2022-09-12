@@ -51,24 +51,22 @@ Some characters may have special meaning, they can be made literal by preceding 
 
 Numbers are interpreted as days, accordingly to the excel interpretation, there are many tokens that represents parts of date
 
-| Symbol | Inerpretation                                                        |
-| ------ | -------------------------------------------------------------------- |
-| d      | day of the month, as a single digit                                  |
-| dd     | two-digit day of the month, possibly with a leading zero             |
-| ddd    | Abbreviated day of the week, represented by the thee initial letters |
-| dddd   | Day of the week                                                      |
-| m      | single digit month number if the last seen symbol was a date part, 
-           otherwise single digit minute                                        |
-| mm     | two-digit month number if the last seen symbols was a date part,
-           otherwise two-digit minute                                           |
-| y or yy| Two digit year                                                       |
-| yyy+   | Four digit year                                                      |
-| h      | single digit hour                                                    |
-| hh+    | two-digit hour, possibly with leading zero                           |
-| s      | single digit second                                                  |
-| ss+    | two-digit second                                                     |
-| A/P    | Instead of 24h time, use 12h with A or P suffix                      |
-| am/pm  | Use 12h time with AM or PM suffix                                    |
+| Symbol | Inerpretation                                                                                    |
+| ------ | ------------------------------------------------------------------------------------------------ |
+| d      | day of the month, as a single digit                                                              |
+| dd     | two-digit day of the month, possibly with a leading zero                                         |
+| ddd    | Abbreviated day of the week, represented by the thee initial letters                             |
+| dddd   | Day of the week                                                                                  |
+| m      | single digit month number if the last seen symbol was a date part, otherwise single digit minute |
+| mm     | two-digit month number if the last seen symbols was a date part, otherwise two-digit minute      |
+| y or yy| Two digit year                                                                                   |
+| yyy+   | Four digit year                                                                                  |
+| h      | single digit hour                                                                                |
+| hh+    | two-digit hour, possibly with leading zero                                                       |
+| s      | single digit second                                                                              |
+| ss+    | two-digit second                                                                                 |
+| A/P    | Instead of 24h time, use 12h with A or P suffix                                                  |
+| am/pm  | Use 12h time with AM or PM suffix                                                                |
 
 The `+` in the above table indicate that the preceding letter may repeat one or more times.
 
@@ -87,8 +85,11 @@ adding more than one digit place holder, e.g `#E+#` would use any exponent, `##E
 even exponents, and so on.
 
 ![](./figures/ex07.png)
+
 ![](./figures/ex08.png)
+
 ![](./figures/ex09.png)
+
 ![](./figures/ex10.png)
 
 ## Thousands separator
