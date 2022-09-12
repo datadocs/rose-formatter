@@ -3,10 +3,10 @@
   "repository": {
     "url": "https://github.com/datadocs/rose-formatter/"
   },
-  "name": "@datadocs/formatter",
+  "name": "@datadocs/rose-formatter",
   "license": "MIT",
   "author": "Alexandre Felipe <o.alexandre.felipe@gmail.com>",
-  "version": "0.1.7",
+  "version": "1.0.0",
   "private": false,
   "main": "dist/index.js",
   "files": [
