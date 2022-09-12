@@ -14,7 +14,7 @@ fs.writeFileSync(readme_file, UPDATED_README)
 console.log(UPDATED_README)
 
 function rewriteURL(orig, file){
-  if(fs.statSync(file).isFile){
+  if(fs.existsSync(file) && fs.statSync(file).isFile){
     fs.unlinkSync(file);
     removedFile[file] = REMOVED;
   }
