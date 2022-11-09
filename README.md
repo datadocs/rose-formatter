@@ -7,6 +7,7 @@
   <img src="https://github.com/datadocs/rose-formatter/actions/workflows/validate.yml/badge.svg">
 <!-- END FROZEN IMAGE -->
 
+Read the blog post <a href="https://www.datadocs.com/blog/so-many-data-formats-to-chose-from">here</a>.
 ## Setup
 
 ``` bash
