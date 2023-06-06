@@ -15,6 +15,7 @@ import {
   DateTimeFormat,
   TimeToken
 } from './parse-format'
+import {Locales} from "./locales";
 
 export function testCondition(cond: Condition, n: number): boolean {
   if(cond === null){
@@ -244,12 +245,12 @@ function formatFraction(f: FractionFormat, n: number): string {
 }
 
 
-const weekDays = [
-  'Sunday', 'Monday', 'Tueseday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
-]
-const monthNames = [
-  'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
-]
+// const weekDays = [
+//   'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+// ]
+// const monthNames = [
+//   'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+// ]
 
 function ampm(date:Date): string{
   return (((date.getUTCHours() + 23) % 24) < 12) ? 'am': 'pm'
@@ -288,7 +289,16 @@ const excelDateOrigin = excelDateToJSDate(0).getTime();
 export function jsDateToExcelDate(date: Date): number {
   return 25569.0 + ((date.getTime() - (date.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24));
 }
-function formatDate(f:DateTimeFormat, date: Date): string {
+
+function getLocaleData(locale: string) {
+  return Locales[locale]
+}
+
+function formatDate(f:DateTimeFormat, date: Date, locale = 'en-us'): string {
+  const {
+    weekDays, monthNames,
+  } = getLocaleData(locale);
+
   return f.parts.map((t) => {
     switch(t.type) {
       case 'time':
@@ -360,7 +370,7 @@ function formatDate(f:DateTimeFormat, date: Date): string {
   }).join('');
 }
 
-function applyFormat(f: GenericFormat, n: number): string {
+function applyFormat(f: GenericFormat, n: number, locale = 'en-us'): string {
   switch(f.type){
     case 'scientific':
       return formatScientific(f, n);
@@ -371,15 +381,15 @@ function applyFormat(f: GenericFormat, n: number): string {
     case 'fraction':
       return formatFraction(f, n);
     case 'datetime':
-      return formatDate(f, excelDateToJSDate(n))
+      return formatDate(f, excelDateToJSDate(n), locale)
   }
   return n.toString()
 }
 
-function formatConditional(f: ConditionalFormat[], n: number){
+function formatConditional(f: ConditionalFormat[], n: number,  locale = 'en-us'){
   for(const fi of f){
     if(!fi.condition || testCondition(fi.condition, n)){
-      return applyFormat(fi.format, n);
+      return applyFormat(fi.format, n, locale);
     }
   }
   return n.toString()
@@ -387,14 +397,22 @@ function formatConditional(f: ConditionalFormat[], n: number){
 export class TextRenderer {
   _format_string: string;
   _format_data: MultiFormat;
-  constructor(format:string){
+  _format_locale: string;
+
+  /**
+   *
+   * @param format
+   * @param locale ISO 639-1 standard language codes
+   */
+  constructor(format:string, locale = 'en-us'){
     this._format_string = format;
     this._format_data = parse(format)
+    this._format_locale = locale.toLowerCase()
   }
   formatNumber(n: number): string {
-    return formatConditional(this._format_data, n)
+    return formatConditional(this._format_data, n, this._format_locale)
   }
   formatDate(n: Date): string {
-    return formatConditional(this._format_data, jsDateToExcelDate(n))
+    return formatConditional(this._format_data, jsDateToExcelDate(n), this._format_locale)
   }
 }
