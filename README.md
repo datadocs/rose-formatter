@@ -143,7 +143,7 @@ Many more usage examples can be found in `./test/*.spec.js`.
 
 The renderer can be configured to use a different locale, the locale is used to format dates.
 
-The locale format follow ISO 639-1 standard language codes
+The locale format follows ISO 639-1 standard language codes
 
 ```javascript
 const {TextRenderer} = require('@datadocs/rose-formatter')
