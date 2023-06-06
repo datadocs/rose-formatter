@@ -137,3 +137,25 @@ console.log(r1.formatNumber(Math.PI))
 A renderer could produce any type of output, e.g. an image, a HTML formatted text, or render it on a canvas.
 
 Many more usage examples can be found in `./test/*.spec.js`.
+
+
+### Internationalization
+
+The renderer can be configured to use a different locale, the locale is used to format dates.
+
+The locale format follow ISO 639-1 standard language codes
+
+```javascript
+const {TextRenderer} = require('@datadocs/rose-formatter')
+
+const r1 = new TextRenderer('dddd, dd of mmmm of yyyy', 'vi')
+console.log(r1.formatDate(
+    new Date(2021, 7, 5, 14, 3, 9, 256)
+))
+```
+
+```text
+thứ 5, 05 of tháng 8 of 2021
+```
+
+List of supported locales can be found in `./src/locales.js`.
