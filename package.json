@@ -9,6 +9,7 @@
   "version": "1.0.0",
   "private": false,
   "main": "dist/index.js",
+  "types": "src/index.d.ts",
   "files": [
     "dist/index.js",
     "src/*.d.ts",
